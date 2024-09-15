@@ -1,27 +1,54 @@
->>> say_my_name = __import__('3-say_my_name').say_my_name
+``3-say_my_name`` module test
+================================
 
->>> say_my_name()
-Traceback (most recent call last):
-TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+Using ``say_my_name`` function
+-------------------------------
 
->>> say_my_name("A", "B", "C")
-Traceback (most recent call last):
-TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+This text file contains test cases for the function ``say_my_name``.
+The function is supposed to print "My name is <first name> <last name>".
+First import function to the varaible say_my_name:
+    
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
 
->>> say_my_name(42)
-Traceback (most recent call last):
-TypeError: first_name must be a string
+Now use it:
 
->>> say_my_name(42, "Hamilton")
-Traceback (most recent call last):
-TypeError: first_name must be a string
+Test_1 first name argument must be string
+-----------------------------------------
+    >>> say_my_name(23, "Restrepo")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
 
->>> say_my_name("Alex", 42)
-Traceback (most recent call last):
-TypeError: last_name must be a string
+Test_2 last name argument must be string
+-----------------------------------------
+    >>> say_my_name("Jose", 334)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
 
->>> say_my_name("Alex", "Hamilton")
-My name is Alex Hamilton
+Test_3 first name can't be None
+-----------------------------------------
+    >>> say_my_name(None, "Restrepo")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
 
->>> say_my_name("Alex")
-My name is Alex
+Test_4 If last name is empty print nothing
+-----------------------------------------
+    >>> say_my_name("Jose")
+    My name is Jose 
+
+Test_5 empty parameters
+-----------------------------------------
+    >>> say_my_name()
+    Traceback (most recent call last):
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Test_6 None as unique parameter
+-----------------------------------------
+    >>> say_my_name(None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+Test_7 first parameter as tuple
+-----------------------------------------
+    >>> say_my_name(("fa", "fd"), "Dairo")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
