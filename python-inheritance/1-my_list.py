@@ -1,21 +1,28 @@
 #!/usr/bin/python3
 """
-module for my lists (inherits form list)
+Module for MyList which inherits from list.
+This class provides a method to print the list in sorted order.
 """
-
 
 class MyList(list):
     """
-    elements of the list int type
-    return my list and sorted list
+    MyList class that inherits from the built-in list class.
+    It allows printing the list in sorted order.
     """
+
     def print_sorted(self):
-        # Remove infinite values before sorting
-        filtered_list = [x for x in self if x != float('inf')]
-        print(sorted(filtered_list))
+        """
+        Prints the list in ascending order.
+        The list is expected to contain integers only.
+        """
+        print(sorted(self))
 
     def append(self, item):
-        # Check if the item is infinite before appending
-        if item == float('inf'):
-            raise ValueError("cannot convert float infinity to integer")
+        """
+        Appends an item to the list.
+        The item must be an integer, raises TypeError otherwise.
+        """
+        if not isinstance(item, int):
+            raise TypeError("Item must be an integer")
         super().append(item)
+
