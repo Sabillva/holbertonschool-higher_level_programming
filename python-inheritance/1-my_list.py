@@ -25,4 +25,3 @@ class MyList(list):
         if not isinstance(item, int):
             raise TypeError("Item must be an integer")
         super().append(item)
-
