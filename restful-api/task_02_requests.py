@@ -20,3 +20,6 @@ def fetch_and_save_posts():
     if response.status_code == 200:
         posts = response.json()
         formatted_posts = [{'id': post['id'], 'title': post['title'], 'body': post['body']} for post in posts]
+        
+        with open('posts.csv', 'w', newline='') as csvfile:
+            fieldnames = ['id', 'title', 'body']
