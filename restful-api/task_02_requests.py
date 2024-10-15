@@ -12,3 +12,8 @@ def fetch_and_print_posts():
         posts = response.json()
         for post in posts:
             print(post['title'])
+
+def fetch_and_save_posts():
+    url = 'https://jsonplaceholder.typicode.com/posts'
+    response = requests.get(url)
+    
