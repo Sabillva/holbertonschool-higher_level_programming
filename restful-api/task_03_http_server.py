@@ -32,3 +32,8 @@ class NewHandler(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write('404 Not Found'.encode())
+
+
+with socketserver.TCPServer(("", 8000), NewHandler) as httpd:
+    print(f"Serving at port {8000}")
+    httpd.serve_forever()
