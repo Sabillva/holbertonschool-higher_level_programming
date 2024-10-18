@@ -2,7 +2,6 @@ import http.server
 import json
 import socketserver
 
-
 class NewHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
@@ -30,10 +29,12 @@ class NewHandler(http.server.BaseHTTPRequestHandler):
 
         else:
             self.send_response(404)
-            self.send_header("Content-type", "text/plain")
+            self.send_header("Content-type", "application/json")
             self.end_headers()
-            self.wfile.write('404 Not Found'.encode())
-
+            error_response = {
+                "error": "Endpoint not found"
+            }
+            self.wfile.write(json.dumps(error_response).encode())
 
 with socketserver.TCPServer(("", 8000), NewHandler) as httpd:
     print(f"Serving at port {8000}")
