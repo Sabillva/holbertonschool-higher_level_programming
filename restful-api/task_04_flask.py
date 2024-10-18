@@ -17,3 +17,6 @@ def get_data():
 def status():
     return "OK"
 
+@app.route("/users/<username>")
+def get_user(username):
+    user = users.get(username)
