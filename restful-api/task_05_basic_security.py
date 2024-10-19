@@ -11,7 +11,6 @@ auth = HTTPBasicAuth()
 jwt = JWTManager(app)
 
 users = {
-
     "user1": {
         "username": "user1",
         "password": generate_password_hash("password"),
@@ -49,3 +48,8 @@ def login():
         return jsonify(access_token=access_token)
     return jsonify({"error": "Invalid credentials"}), 401
 
+@app.route('/jwt-protected')
+@jwt_required()
+def jwt_protected():
+    return "JWT Auth: Access Granted"
+    
