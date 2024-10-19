@@ -31,4 +31,9 @@ def verify_password(username, password):
     if user and check_password_hash(user['password'], password):
         return user
     return None
-    
+
+
+@app.route('/basic-protected')
+@auth.login_required
+def basic_protected():
+    return "Basic Auth: Access Granted"
